@@ -7,7 +7,7 @@ function addTask(){
     else{
         let li=document.createElement("li"); // a new task is created
         li.innerHTML=inputBox.value; //text added in input field will be stored in li.innerhtml
-        listContainer.appendChild(li);
+        listContainer.appendChild(li); //append the created task to listContainer
         let span=document.createElement("span");
         li.appendChild(span);
     }
@@ -16,12 +16,12 @@ function addTask(){
 }
 
 listContainer.addEventListener("click",function(e){
-    if(e.target.tagName==="LI"){
-        e.target.classList.toggle("checked");
+    if(e.target.tagName==="LI"){ //if user clicked on list element, it will get toggled i.e.,(check or uncheck) depending on the prev. state
+        e.target.classList.toggle("checked"); 
         saveData();
     }
     else if(e.target.tagName==="SPAN"){
-        e.target.parentElement.remove();
+        e.target.parentElement.remove();//if user clicked on span , the element gets removed .
         saveData();
     }
     
@@ -29,10 +29,10 @@ listContainer.addEventListener("click",function(e){
 
 
 function saveData(){
-    localStorage.setItem("data",listContainer.innerHTML);
+    localStorage.setItem("data",listContainer.innerHTML); //store 
 }
 
 function showTask(){
-    listContainer.innerHTML=localStorage.getItem("data");
+    listContainer.innerHTML=localStorage.getItem("data"); //display the previously stored data.
 }
 showTask();
